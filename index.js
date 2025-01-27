@@ -1,7 +1,6 @@
 import Tree from "./tree,js";
 
 
-const tree = new Tree([1,2,8,4,78,0,6,40,3,2])
+const tree = new Tree([8,1,2,19,54,76,10,12,9,77,3,12,4]);
 
 console.log(tree)
-

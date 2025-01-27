@@ -8,9 +8,9 @@ export default class Tree {
     buildTree(array) {
         const uniqueArray = [...new Set(array)];
         const sortedArray = uniqueArray.sort((a, b) => a - b);
-
+       
         const start = 0;
-        const end = array.length - 1;
+        const end = sortedArray.length - 1;
 
         if (start > end) {
             return null;
