@@ -24,4 +24,28 @@ export default class Tree {
 
         return node;
     };
+
+    insert(value) {      
+        let node = new Node(value);
+        let previuos = null;
+        let current = this.root;
+
+        while (current !== null) {
+            if (value < current.data) {
+                previuos = current;
+                current = current.left;                
+            } else if (value > current.data) {
+                previuos = current;
+                current = current.right;
+            };
+        };        
+
+        if (value < previuos.data) {
+            previuos.left = node;
+        };
+
+        if (value > previuos.data) {
+            previuos.right = node;
+        };
+    };
 }
