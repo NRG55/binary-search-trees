@@ -1,7 +1,7 @@
 import Tree from "./tree.js";
 
 
-const tree = new Tree([8,1,2,19,54,76,10,12,9,77,3,12,4]);
+const tree = new Tree([56,2,8,41,79,1,-2,10,4,65,7,0]);
 
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -20,4 +20,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   tree.insert('13')
   tree.insert('5')
 
-  prettyPrint(tree.root)
+   prettyPrint(tree.root)

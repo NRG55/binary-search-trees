@@ -12,7 +12,7 @@ export default class Tree {
         const start = 0;
         const end = sortedArray.length - 1;
 
-        if (start > end) {
+        if (start > end) {        
             return null;
         };
 
@@ -26,7 +26,14 @@ export default class Tree {
     };
 
     insert(value) {      
-        let node = new Node(value);
+        let node = new Node(value);      
+
+        if (this.root === null) {
+            this.root = node;
+                  
+            return;
+        };
+
         let previuos = null;
         let current = this.root;
 
