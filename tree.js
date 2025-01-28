@@ -55,4 +55,49 @@ export default class Tree {
             previuos.right = node;
         };
     };
+
+    deleteItem(value, root = this.root) {
+        //Base case
+        if (root === null) {
+            return root;
+        };
+
+        if (value < root.data) {
+            root.left = this.deleteItem(value, root.left);
+        } else if (value > root.data) {
+            root.right = this.deleteItem(value, root.right);
+        //if value is the same as root.data - found a node to be deleted   
+        } else {
+            //if there is no left child, replace the node with a right child
+            if (root.left === null) {
+                return root.right;
+            //if there is no right child, replace the node with a left child    
+            } else if (root.right === null) {
+                return root.left;
+            };
+
+            //if the node has two children: looking for a smallest in the right subtree for replacement
+            const getMinValue = (node) => {
+                let current = node;               
+               
+                while (current.left) {                 
+                    current = current.left;
+                };
+
+                let minValue = current.data;
+
+                return minValue;
+            };
+            
+            //replaces the value with a smallest in the right subtree
+            root.data = getMinValue(root.right);
+            
+            //removes the smallest value in the right subtree
+            root.right = this.deleteItem(root.data, root.right);
+        };
+
+        return root;
+    };
+
+
 }
