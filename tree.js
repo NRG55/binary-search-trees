@@ -99,6 +99,24 @@ export default class Tree {
         return minValue;
     };
 
+    find(value) {
+        let current = this.root;
+
+        while (current !== null) {         
+            if (current.data === value) {              
+                return current;
+            };
+
+            if (value < current.data) {
+                current = current.left
+            } else {
+                current = current.right;
+            };
+        };
+
+        return null;
+    };
+
 
 
 }

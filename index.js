@@ -3,7 +3,6 @@ import Tree from "./tree.js";
 
 const tree = new Tree([56,2,8,41,79,1,-2,10,4,65,7,0]);
 
-
 const prettyPrint = (node, prefix = "", isLeft = true) => {
     if (node === null) {
       return;
@@ -22,3 +21,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   tree.deleteItem('7')
 
    prettyPrint(tree.root)
+
+   console.log(tree.find(65))
+  
