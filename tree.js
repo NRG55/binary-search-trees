@@ -76,28 +76,29 @@ export default class Tree {
                 return root.left;
             };
 
-            //if the node has two children: looking for a smallest in the right subtree for replacement
-            const getMinValue = (node) => {
-                let current = node;               
-               
-                while (current.left) {                 
-                    current = current.left;
-                };
+            //if the node has two children: looks for a smallest value node in the right subtree and 
+            //replaces the node to be deleted with a smallest value node
+            root.data = this.getMinValue(root.right);
 
-                let minValue = current.data;
-
-                return minValue;
-            };
-            
-            //replaces the value with a smallest in the right subtree
-            root.data = getMinValue(root.right);
-            
-            //removes the smallest value in the right subtree
+            //removes the smallest value node in the right subtree
             root.right = this.deleteItem(root.data, root.right);
         };
 
         return root;
     };
+
+    getMinValue(node) {
+        let current = node;               
+       
+        while (current.left) {                 
+            current = current.left;
+        };
+
+        let minValue = current.data;
+
+        return minValue;
+    };
+
 
 
 }
