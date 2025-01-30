@@ -66,18 +66,18 @@ export default class Tree {
             root.left = this.deleteItem(value, root.left);
         } else if (value > root.data) {
             root.right = this.deleteItem(value, root.right);
-        //if value is the same as root.data - found a node to be deleted   
+        //if value is the same as root.data - the node to be deleted is found  
         } else {
-            //if there is no left child, replace the node with a right child
+            //if there is no left child, replaces the node with a right child
             if (root.left === null) {
                 return root.right;
-            //if there is no right child, replace the node with a left child    
+            //if there is no right child, replaces the node with a left child    
             } else if (root.right === null) {
                 return root.left;
             };
 
             //if the node has two children: looks for a smallest value node in the right subtree and 
-            //replaces the node to be deleted with a smallest value node
+            //replaces the node to be deleted with a smallest in the right subtree value node
             root.data = this.getMinValue(root.right);
 
             //removes the smallest value node in the right subtree
@@ -99,6 +99,7 @@ export default class Tree {
         return minValue;
     };
 
+    //returns the node with the given value or null if not found
     find(value) {
         let current = this.root;
 
@@ -117,6 +118,28 @@ export default class Tree {
         return null;
     };
 
+    //call the callback on each node as it traverses the tree in breadth-first order, passing the whole node as an argument
+    levelOrder(callback) {
+        if (typeof callback !== "function") {
+            throw new Error("A callback function is required!");
+        };
 
+        let queue = [];
 
+        queue.push(this.root);
+
+        while (queue.length > 0) {
+            //dequeue the first node
+            let current = queue.shift();
+
+            callback(current);
+            //pushes children to the queue to keep traversing in breadth-first order
+            if (current.left) {
+                queue.push(current.left);
+            };
+            if (current.right) {
+                queue.push(current.right);
+            };
+        };
+    };
 }

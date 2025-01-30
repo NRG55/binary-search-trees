@@ -23,4 +23,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
    prettyPrint(tree.root)
 
    console.log(tree.find(65))
+
+   const callbackTest = (node) => {
+    console.log(node.data);
+   }
+
+   tree.levelOrder(callbackTest);
   
