@@ -27,6 +27,9 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
    const callbackTest = (node) => {
     console.log(node.data);
    }
-
+   
+   console.log("----level-order---")
    tree.levelOrder(callbackTest);
+   console.log("-----in-order-----")
+   tree.inOrder(callbackTest)
   

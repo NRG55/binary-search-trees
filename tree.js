@@ -118,7 +118,7 @@ export default class Tree {
         return null;
     };
 
-    //call the callback on each node as it traverses the tree in breadth-first order, passing the whole node as an argument
+    //call the callback function to each node as it traverses the tree in breadth-first order (levels), passing the whole node as an argument
     levelOrder(callback) {
         if (typeof callback !== "function") {
             throw new Error("A callback function is required!");
@@ -142,4 +142,21 @@ export default class Tree {
             };
         };
     };
+
+    //call the callback function to ech node in in-order (left subtree -> root node -> right subtree)
+    inOrder(callback) {
+        if (typeof callback !== "function") {
+            throw new Error("A callback function is required!");
+        };
+        //recursive traverse
+        function traverse(node) {
+            if (node === null) return;
+            
+            traverse(node.left); 
+            callback(node);
+            traverse(node.right);
+        };      
+
+        traverse(this.root);
+    };    
 }
