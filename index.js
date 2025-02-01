@@ -36,4 +36,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
    tree.inOrder(callbackTest)
    console.log("-----pre-order-----")
    tree.preOrder(callbackTest)
+   console.log("-----post-order-----")
+   tree.postOrder(callbackTest)
   

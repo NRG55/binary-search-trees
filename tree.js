@@ -215,4 +215,21 @@ export default class Tree {
 
         traverse(this.root);
     };
+
+    //call the callback function to each node in post-order (left subtree -> right subtree -> root node)
+    postOrder(callback) {
+        if (typeof callback !== "function") {
+            throw new Error("A callback function is required!");
+        };
+        //recursive traverse
+        function traverse(node) {
+            if (node === null) return;
+            
+            traverse(node.left);           
+            traverse(node.right);
+            callback(node);
+        };      
+
+        traverse(this.root);
+    };
 }
