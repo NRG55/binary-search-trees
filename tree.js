@@ -174,15 +174,15 @@ export default class Tree {
                 queue.push(current.right);
             }; 
             
-            return dequeue();
-            };
+            dequeue();
+        }; 
 
-            dequeue();        
+        dequeue();        
     };
 
     //----------DEPTH-FIRST-ORDER-----------
 
-    //call the callback function to ech node in in-order (left subtree -> root node -> right subtree)
+    //call the callback function to each node in in-order (left subtree -> root node -> right subtree)
     inOrder(callback) {
         if (typeof callback !== "function") {
             throw new Error("A callback function is required!");
@@ -197,5 +197,22 @@ export default class Tree {
         };      
 
         traverse(this.root);
-    };    
+    };
+    
+    //call the callback function to each node in pre-order (root node -> left subtree -> right subtree)
+    preOrder(callback) {
+        if (typeof callback !== "function") {
+            throw new Error("A callback function is required!");
+        };
+        //recursive traverse
+        function traverse(node) {
+            if (node === null) return;
+
+            callback(node);
+            traverse(node.left);           
+            traverse(node.right);
+        };      
+
+        traverse(this.root);
+    };
 }
