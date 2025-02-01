@@ -30,6 +30,8 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
    
    console.log("----level-order---")
    tree.levelOrder(callbackTest);
+   console.log("----level-order-recursive--")
+   tree.levelOrderRecursive(callbackTest);
    console.log("-----in-order-----")
    tree.inOrder(callbackTest)
   
