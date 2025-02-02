@@ -232,4 +232,48 @@ export default class Tree {
 
         traverse(this.root);
     };
+    
+    //returns a number of edges in the longest path from a given node to a leaf node
+    //------iterative-----
+    height(node = this.root) {        
+        if (node === null) {
+            return 0;
+        };
+        
+        let height = -1; // -1 is to avoid a given root node itself (counts only a number of edges from a given node to a leaf node)
+        let queue = [node];
+
+        while (queue.length !== 0) {
+            let levelSize = queue.length;
+
+            while (levelSize !== 0) {
+                let current = queue.shift();
+               
+                if (current.left) {
+                    queue.push(current.left);
+                };
+                if (current.right) {
+                    queue.push(current.right);
+                };
+
+                levelSize--
+            };
+
+            height++
+        };
+
+        return height;
+    };
+
+    //-------recursive-------
+    heightRecursive(node = this.root) {        
+        if (node === null) {
+            return -1;
+        };
+      
+        const leftHeight = this.height(node.left);
+        const rightHeight = this.height(node.right);
+
+        return Math.max(leftHeight, rightHeight) +1;
+    };
 }
