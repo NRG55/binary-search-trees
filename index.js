@@ -38,5 +38,8 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
    tree.preOrder(callbackTest)
    console.log("-----post-order-----")
    tree.postOrder(callbackTest)
+   console.log("-----height-----")
    console.log(tree.heightRecursive(tree.root))
+   console.log("-----depth-----") 
+   console.log(tree.depth(tree.root.left.right.right.right))
   

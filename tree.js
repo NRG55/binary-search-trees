@@ -270,10 +270,30 @@ export default class Tree {
         if (node === null) {
             return -1;
         };
-      
+        
         const leftHeight = this.height(node.left);
         const rightHeight = this.height(node.right);
+      
+        return Math.max(leftHeight, rightHeight) + 1;       
+    };
 
-        return Math.max(leftHeight, rightHeight) +1;
+    //returns the given node’s depth (a number of edges in the path from a given node to the tree’s root node
+    depth(node) {
+        let level = 0;
+        let current = this.root;
+
+        while (current !== null) {
+            if (node.data === current.data) {
+                return level;
+            };
+         
+            if (node.data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            };           
+
+            level++;           
+        };    
     };
 }
